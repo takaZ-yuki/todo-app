@@ -1,0 +1,60 @@
+version: '3'
+services:
+  echo-app:
+    build:
+      context: .
+      dockerfile: ./Docker/Dockerfile
+    container_name: echo-app
+    ports:
+      - '1323:1323'
+    volumes:
+      - .:/app
+    depends_on:
+      - echo-mysql
+    command: ["./start.sh"]
+
+  echo-mysql:
+    image: mysql:8.0.21
+    container_name: echo-mysql
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_USER: 'webuser'
+      MYSQL_PASSWORD: 'webpass'
+      MYSQL_ROOT_PASSWORD: 'pass'
+      MYSQL_DATABASE: 'go_mysql8_development'
+    # MySQLの文字コードを指定する
+    volumes:
+      # DBデータの永続化
+      - "./Docker/mysql/data:/var/lib/mysql"
+      # MySQL起動時にDBを作成し、初期データの投入する
+      - "./Docker/mysql/sql:/docker-entrypoint-initdb.d"
+      - "./Docker/mysql/my.cnf:/etc/mysql/conf.d/etc-mysql.cnf"
+    command: --default-authentication-plugin=mysql_native_password
+
+  echo-phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: echo-phpmyadmin
+    restart: always
+    environment:
+      - PMA_ARBITRARY=1
+      - PMA_HOST=echo-mysql
+      - PMA_USER=root
+      - PMA_PASSWORD=pass
+    links:
+      - echo-mysql
+    ports:
+      - 8080:80
+    volumes:
+      - /sessions
+
+  react-app:
+    container_name: react-app-container
+    image: node:16-alpine
+    volumes:
+      - ./html/:/app
+    working_dir: /app
+    command: sh -c "npm install && npm run dev"
+    ports:
+      - '80:80'
+      - '24678:24678'

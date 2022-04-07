@@ -1,0 +1,5 @@
+tmp/*
+Docker/mysql/data/*
+!Docker/mysql/data/.gitkeep
+logs/*
+!logs/.gitkeep

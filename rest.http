@@ -1,0 +1,31 @@
+### 全件検索
+GET http://localhost:1323/users HTTP/1.1
+User-Agent: rest-client
+content-type: application/json
+accept: application/json
+
+### ユーザ登録
+POST http://localhost:1323/users HTTP/1.1
+User-Agent: rest-client
+content-type: application/json
+
+{
+  "name": "Johnsonnn",
+  "email": "test@test.com"
+}
+
+### １件検索
+GET http://localhost:1323/users/1 HTTP/1.1
+User-Agent: rest-client
+content-type: application/json
+accept: application/json
+
+### ユーザ更新
+PUT http://localhost:1323/users/3 HTTP/1.1
+User-Agent: rest-client
+content-type: application/json
+
+{
+  "name": "makaroni",
+  "email": "test2@test.com"
+}
