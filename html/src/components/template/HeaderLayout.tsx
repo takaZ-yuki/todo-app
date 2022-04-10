@@ -51,7 +51,7 @@ export const HeaderLayout = (props: any) => {
                   textDecoration: 'none',
                 }}
                 >
-                Task Man
+                Todo Man
               </Link>
             <Flex display={{base: 'none', md: 'flex'}} ml={10}>
                 <DesktopNav />

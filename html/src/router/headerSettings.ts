@@ -2,14 +2,14 @@ import { NavItemType } from "../types/navItemType";
 
 export const NAV_ITEMS: Array<NavItemType> = [
   {
-    label: 'タスク一覧',
+    label: 'Todo一覧',
     subLabel: '',
-    href: '/task',
+    href: '/Todo',
   },
   // {
-  //   label: 'タスク登録',
+  //   label: 'Todo登録',
   //   subLabel: '',
-  //   href: '/task/edit',
+  //   href: '/Todo/edit',
   // },
   // {
   //   label: 'Inspiration',

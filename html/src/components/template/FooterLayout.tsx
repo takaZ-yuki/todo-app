@@ -2,7 +2,7 @@ import { Link, Text, useColorModeValue, Box, Container, Stack } from "@chakra-ui
 import { memo, VFC } from "react";
 import { FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
 import { SocialButton } from "../atoms/layout/SocialButton";
-import { Logo } from "../atoms/layout/Logo";
+import { LogoTransparent } from "../icons";
 import { useClickLink } from "../../hooks/useClickLink";
 
 export const FooterLayout: VFC = memo(() => {
@@ -19,7 +19,7 @@ export const FooterLayout: VFC = memo(() => {
         spacing={4}
         justify={'center'}
         align={'center'}>
-        <Logo />
+        <LogoTransparent />
         <Stack direction={'row'} spacing={6}>
           <Link onClick={() => onClickLink('/')} >Home</Link>
           <Link onClick={() => onClickLink('/about')}>About</Link>

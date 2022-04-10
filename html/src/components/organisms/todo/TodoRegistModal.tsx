@@ -5,43 +5,48 @@ import "react-datepicker/dist/react-datepicker.css"
 import ja from "date-fns/locale/ja"
 import Select from 'react-select'
 
+import ReactTagInput from "@pathofdev/react-tag-input";
+import "@pathofdev/react-tag-input/build/index.css";
+
 interface Props {
   isOpen: boolean;
   onClose: () => void;
-  taskId?: number;
+  todoId?: number;
 }
 
-const userOptions = [
-  {value: 1, label: "ざわ"},
-  {value: 2, label: "ピングー"},
-  {value: 3, label: "スナフキン"},
-  {value: 4, label: "茂吉"},
+const statusOptions = [
+  {value: 1, label: "未着手"},
+  {value: 2, label: "着手中"},
+  {value: 3, label: "確認中"},
+  {value: 4, label: "完了"},
 ]
 
-export const TaskRegistModal: VFC<Props> = memo((props) => {
+export const TodoRegistModal: VFC<Props> = memo((props) => {
   const today = new Date();
   registerLocale('ja', ja);
 
-  const {isOpen, onClose, taskId} = props;
+  const {isOpen, onClose, todoId} = props;
   const [title, setTitle] = useState<string>();
   const [description, setDescription] = useState<string>();
-  const [assignerId, setAssignerId] = useState<string>();
+  const [statusId, setStatusId] = useState<string>();
+  const [startDate, setStartDate] = useState<Date>(today);
   const [expireDate, setExpireDate] = useState<Date>(today);
+  const [tags, setTags] = useState([])
 
   const onChangeTitle = (e: ChangeEvent<HTMLInputElement>) => setTitle(e.target.value);
   const onChangeDescription = (e: ChangeEvent<HTMLInputElement>) => setDescription(e.target.value);
-  const onChangeAssignerId = (e: any) => setAssignerId(e.value);
+  const onChangeStatusId = (e: any) => setStatusId(e.value);
 
   useEffect(() => {
-    console.log(`タスクID（${taskId}）を取得できているので検索`);
+    console.log(`TodoID（${todoId}）を取得できているので検索`);
   });
 
   const onClickSubmit = () => {
     console.log(`
-      taskId: ${taskId}
+      todoId: ${todoId}
       title: ${title}
       description: ${description}
-      assignerId: ${assignerId}
+      statusId: ${statusId}
       expireDate: ${expireDate}
     `);
   }
@@ -50,7 +55,7 @@ export const TaskRegistModal: VFC<Props> = memo((props) => {
   <Modal isOpen={isOpen} onClose={onClose} autoFocus={false} motionPreset="slideInBottom">
     <ModalOverlay />
     <ModalContent pb={2}>
-      <ModalHeader>タスク登録</ModalHeader>
+      <ModalHeader>Todo登録</ModalHeader>
       <ModalCloseButton />
       <ModalBody mx={4}>
         <Stack spacing={4}>
@@ -63,8 +68,22 @@ export const TaskRegistModal: VFC<Props> = memo((props) => {
             <Input type="textarea" onChange={onChangeDescription}/>
           </FormControl>
           <FormControl>
-            <FormLabel>担当者</FormLabel>
-            <Select options={userOptions} onChange={onChangeAssignerId}/>
+            <FormLabel>タグ</FormLabel>
+            <ReactTagInput
+            tags={tags}
+            onChange={(newTags) => setTags(newTags)}/>
+          </FormControl>
+          <FormControl>
+            <FormLabel>ステータス</FormLabel>
+            <Select options={statusOptions} onChange={onChangeStatusId}/>
+          </FormControl>
+          <FormControl>
+            <FormLabel>開始日</FormLabel>
+            <ReactDatePicker
+            dateFormat="yyyy-MM-dd"
+            selected={startDate}
+            minDate={today}
+            onChange={selectDate => {setStartDate(selectDate || today)}} />
           </FormControl>
           <FormControl>
             <FormLabel>期限日</FormLabel>
