@@ -2,6 +2,7 @@ import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import { Text, Link, Flex, useColorModeValue, Stack, Heading, Box, HStack, FormControl, FormLabel, Input, InputGroup, InputRightElement, Button } from "@chakra-ui/react";
 import { memo, useState, VFC } from "react"
 import { useClickLink } from "../../hooks/useClickLink";
+import { PrimaryButton } from "../atoms/button/PrimaryButton";
 
 export const SignUp: VFC = memo(() => {
   const [showPassword, setShowPassword] = useState(false);
@@ -59,16 +60,9 @@ export const SignUp: VFC = memo(() => {
               </InputGroup>
             </FormControl>
             <Stack spacing={10} pt={2}>
-              <Button
-                loadingText="Submitting"
-                size="lg"
-                bg={'pink.400'}
-                color={'white'}
-                _hover={{
-                  bg: 'pink.300'
-                }}>
+              <PrimaryButton buttonProps={{loadingText: 'Submitting', size: "lg"}}>
                 Sign up
-              </Button>
+              </PrimaryButton>
             </Stack>
             <Stack pt={6}>
               <Text align={'center'}>

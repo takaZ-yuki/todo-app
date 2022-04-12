@@ -1,5 +1,7 @@
-import { Link, Flex, useColorModeValue, Box, VStack, Heading, Stack, Tooltip, IconButton, FormControl, FormLabel, InputGroup, InputLeftElement, Input, Textarea, Button } from "@chakra-ui/react";
+import { Flex, useColorModeValue, Box, VStack, Heading, FormControl, FormLabel, InputGroup, Input, Textarea, Button } from "@chakra-ui/react";
 import { memo, VFC } from "react"
+
+import { PrimaryButton } from "../atoms/button/PrimaryButton"
 
 export const Contact: VFC = memo(() => {
   return (
@@ -60,16 +62,9 @@ export const Contact: VFC = memo(() => {
                   />
                 </FormControl>
 
-                <Button
-                  colorScheme="blue"
-                  bg={'pink.400'}
-                  color={'white'}
-                  _hover={{
-                    bg: 'pink.300'
-                  }}
-                  isFullWidth>
-                  Send Message
-                </Button>
+                <PrimaryButton buttonProps={{loadingText: 'Submitting', size: "lg"}}>
+                  送信
+                </PrimaryButton>
               </VStack>
             </Box>
           </VStack>

@@ -7,6 +7,8 @@ import Select from 'react-select'
 
 import ReactTagInput from "@pathofdev/react-tag-input";
 import "@pathofdev/react-tag-input/build/index.css";
+import { PrimaryButton } from "../../atoms/button/PrimaryButton";
+import { SecondaryButton } from "../../atoms/button/SecondaryButton";
 
 interface Props {
   isOpen: boolean;
@@ -96,29 +98,13 @@ export const TodoRegistModal: VFC<Props> = memo((props) => {
         </Stack>
       </ModalBody>
       <ModalFooter>
-        <Button
-          bg={'gray.400'}
-          color={'white'}
-          w="full"
-          m={2}
-          onClick={onClose}
-          _hover={{
-            bg: 'gray.500',
-          }}>
-          Cancel
-        </Button>
-        <Button
-          color={'white'}
-          bg={'pink.400'}
-          m={2}
-          w="full"
-          onClick={onClickSubmit}
-          _hover={{
-            bg: 'pink.300'
-          }}>
-          Submit
-        </Button>
-      </ModalFooter>
+        <SecondaryButton buttonProps={{m: 2}} onClick={onClose}>
+          キャンセル
+        </SecondaryButton>
+        <PrimaryButton buttonProps={{m: 2}}>
+          送信
+        </PrimaryButton>
+    </ModalFooter>
     </ModalContent>
   </Modal>
   );

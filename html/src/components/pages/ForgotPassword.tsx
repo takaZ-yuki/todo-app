@@ -1,5 +1,7 @@
-import { Button, Flex, FormControl, Heading, Input, Stack, useColorModeValue, Text } from "@chakra-ui/react"
+import { Flex, FormControl, Heading, Input, Stack, useColorModeValue, Text } from "@chakra-ui/react"
 import { memo, VFC } from "react"
+
+import { PrimaryButton } from "../atoms/button/PrimaryButton"
 
 export const ForgotPassword: VFC = memo(() => {
   return (
@@ -33,14 +35,9 @@ export const ForgotPassword: VFC = memo(() => {
           />
         </FormControl>
         <Stack spacing={6}>
-          <Button
-            bg={'pink.400'}
-            color={'white'}
-            _hover={{
-              bg: 'pink.300'
-            }}>
-            Request Reset
-          </Button>
+          <PrimaryButton buttonProps={{loadingText: 'Submitting', size: "lg"}}>
+            送信
+          </PrimaryButton>
         </Stack>
       </Stack>
     </Flex>

@@ -1,7 +1,9 @@
 import { ChevronDownIcon, ChevronLeftIcon, ChevronRightIcon, CloseIcon, HamburgerIcon, Icon } from '@chakra-ui/icons';
 import { Box, Text, Button, Collapse, Flex, Heading, IconButton, Link, Spacer, Stack, useColorModeValue, useDisclosure, Popover, PopoverTrigger, PopoverContent, useBreakpointValue, Avatar } from '@chakra-ui/react';
+import base from '@emotion/styled/types/base';
 import { memo, VFC } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { PrimaryButton } from '../atoms/button/PrimaryButton';
 import { DesktopNav } from '../organisms/layout/DesktopNav';
 import { MobileNav } from '../organisms/layout/MobileNav';
 
@@ -80,18 +82,16 @@ export const HeaderLayout = (props: any) => {
                 onClick={() => onClickLink('/sign-in')}>
                   Sign In
               </Button>
-              <Button
-                display={{base: 'none', md: 'inline-flex'}}
-                fontSize={'sm'}
-                fontWeight={600}
-                color={'white'}
-                bg={'pink.400'}
+              <PrimaryButton
                 onClick={() => onClickLink('/sign-up')}
-                _hover={{
-                  bg: 'pink.300'
-                }}>
+                buttonProps={{
+                  display: {base: 'none', md: 'inline-flex'},
+                  fontSize: 'sm',
+                  fontWeight: 600,
+                }}
+              >
                 Sign Up
-              </Button>
+              </PrimaryButton>
           </Stack>
       </Flex>
 

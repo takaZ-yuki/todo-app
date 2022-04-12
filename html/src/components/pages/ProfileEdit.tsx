@@ -1,6 +1,8 @@
 import { SmallCloseIcon } from "@chakra-ui/icons"
 import { Flex, useColorModeValue, Stack, Heading, FormControl, FormLabel, Center, Avatar, AvatarBadge, IconButton, Button, Input } from "@chakra-ui/react"
 import { memo, VFC } from "react"
+import { PrimaryButton } from "../atoms/button/PrimaryButton"
+import { SecondaryButton } from "../atoms/button/SecondaryButton"
 
 export const ProfileEdit: VFC = memo(() => {
   return (
@@ -67,23 +69,12 @@ export const ProfileEdit: VFC = memo(() => {
           />
         </FormControl>
         <Stack spacing={6} direction={['column', 'row']}>
-          <Button
-            bg={'gray.400'}
-            color={'white'}
-            w="full"
-            _hover={{
-              bg: 'gray.500',
-            }}>
-            Cancel
-          </Button>
-          <Button
-            color={'white'}
-            w="full"
-            _hover={{
-              bg: 'pink.300'
-            }}>
-            Submit
-          </Button>
+          <SecondaryButton>
+            キャンセル
+          </SecondaryButton>
+          <PrimaryButton>
+            送信
+          </PrimaryButton>
         </Stack>
       </Stack>
     </Flex>

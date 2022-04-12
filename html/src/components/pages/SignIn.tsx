@@ -1,6 +1,7 @@
 import { Link, Text, Flex, useColorModeValue, Stack, Heading, Box, FormControl, FormLabel, Input, Checkbox, Button } from "@chakra-ui/react"
 import { memo, VFC } from "react"
 import { useClickLink } from "../../hooks/useClickLink";
+import { PrimaryButton } from "../atoms/button/PrimaryButton";
 
 export const SignIn: VFC = memo(() => {
   const [onClickLink] = useClickLink();
@@ -37,15 +38,10 @@ export const SignIn: VFC = memo(() => {
                 <Checkbox>Remember me</Checkbox>
                 <Link color={'blue.400'} onClick={() => onClickLink('/forgot-password')}>Forgot password?</Link>
               </Stack>
-              <Button
-                bg={'pink.400'}
-                color={'white'}
-                _hover={{
-                  bg: 'pink.300'
-                }}>
-                Sign in
-              </Button>
-            </Stack>
+              <PrimaryButton buttonProps={{loadingText: 'Submitting', size: "lg"}}>
+              Sign in
+              </PrimaryButton>
+           </Stack>
           </Stack>
         </Box>
       </Stack>

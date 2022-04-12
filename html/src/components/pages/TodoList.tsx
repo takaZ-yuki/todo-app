@@ -4,6 +4,7 @@ import { Box, Button, useDisclosure } from "@chakra-ui/react"
 import { TodoTable } from "../organisms/todo/TodoTable";
 import { TodoRegistModal } from "../organisms/todo/TodoRegistModal";
 import { TodoType } from "../../types/todoType";
+import { PrimaryButton } from "../atoms/button/PrimaryButton";
 
 const TodoData: Array<TodoType> = [
   {
@@ -51,17 +52,9 @@ export const TodoList: VFC = memo(() => {
   return (
     <>
       <Box>
-        <Button
-          loadingText="Submitting"
-          onClick={onOpen}
-          size="sm"
-          bg={'pink.400'}
-          color={'white'}
-          _hover={{
-            bg: 'pink.300'
-          }}>
+        <PrimaryButton onClick={onOpen} buttonProps={{loadingText: 'Submitting', size: "sm", w: 'auto'}}>
           Todo追加
-        </Button>
+        </PrimaryButton>
       </Box>
       <TodoTable todoList={todoList} onClick={onClickTodo}/>
       <TodoRegistModal todoId={targetTodoId} isOpen={isOpen} onClose={onClose} />

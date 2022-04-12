@@ -27,13 +27,13 @@ export const Router = memo(() => {
             <Route path="/todo" element={<TodoList />}></Route>
             <Route path="/profile" element={<Profile />}></Route>
             <Route path="/profile/edit" element={<ProfileEdit />}></Route>
-            <Route path="/forgot-password" element={<ForgotPassword />}></Route>
-            <Route path="/reset-password" element={<ResetPassword />}></Route>
             <Route path="/contact" element={<Contact />}></Route>
             <Route path="/about" element={<About />}></Route>
           </Route>
           <Route path="/sign-in" element={<SignIn />}></Route>
           <Route path="/sign-up" element={<SignUp />}></Route>
+          <Route path="/forgot-password" element={<ForgotPassword />}></Route>
+          <Route path="/reset-password" element={<ResetPassword />}></Route>
           <Route path="*" element={<Page404 />}></Route>
       </Routes>
     </>

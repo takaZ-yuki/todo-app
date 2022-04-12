@@ -1,5 +1,6 @@
 import { Flex, useColorModeValue, Stack, Heading, FormControl, FormLabel, Input, Button } from "@chakra-ui/react"
 import { memo, VFC } from "react"
+import { PrimaryButton } from "../atoms/button/PrimaryButton"
 
 export const ResetPassword: VFC = memo(() => {
   return (
@@ -33,14 +34,9 @@ export const ResetPassword: VFC = memo(() => {
           <Input type="password" />
         </FormControl>
         <Stack spacing={6}>
-          <Button
-            bg={'pink.400'}
-            color={'white'}
-            _hover={{
-              bg: 'pink.300'
-            }}>
-            Submit
-          </Button>
+          <PrimaryButton buttonProps={{loadingText: 'Submitting', size: "lg"}}>
+            送信
+          </PrimaryButton>
         </Stack>
       </Stack>
     </Flex>

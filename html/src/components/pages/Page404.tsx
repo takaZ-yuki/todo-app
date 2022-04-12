@@ -1,6 +1,7 @@
 import { Text, Box, Heading, Button } from "@chakra-ui/react"
 import { memo, VFC } from "react"
 import { useClickLink } from "../../hooks/useClickLink";
+import { PrimaryButton } from "../atoms/button/PrimaryButton";
 
 export const Page404: VFC = memo(() => {
   const [onClickLink] = useClickLink();
@@ -22,16 +23,11 @@ export const Page404: VFC = memo(() => {
         The page you're looking for does not seem to exist
       </Text>
 
-      <Button
-        bg={'pink.400'}
-        color={'white'}
+      <PrimaryButton
         onClick={() => onClickLink('/')}
-        _hover={{
-          bg: 'pink.300'
-        }}
-        variant="solid">
+        buttonProps={{variant: "solid", w: "auto"}}>
         Go to Home
-      </Button>
+      </PrimaryButton>
     </Box>
   )
 })
