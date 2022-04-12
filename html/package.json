@@ -5,7 +5,8 @@
         "dev": "vite",
         "build": "vite build",
         "preview": "vite preview",
-        "icons": "npx @svgr/cli -d src/components/icons public/icons"
+        "icons": "npx @svgr/cli -d src/components/icons public/icons",
+        "netlify": "netlify dev"
     },
     "dependencies": {
         "@chakra-ui/icons": "^1.1.7",
@@ -16,6 +17,7 @@
         "@types/react-datepicker": "^4.3.4",
         "axios": "^0.25.0",
         "framer-motion": "^6",
+        "netlify-cli": "^9.16.6",
         "react": "^17.0.2",
         "react-datepicker": "^4.7.0",
         "react-dom": "^17.0.2",
