@@ -101,3 +101,21 @@ $ curl --location --request DELETE 'localhost:1323/users/2'
 
 - top  
 http://localhost/
+
+
+$$$ Netlify デプロイ手順
+
+```
+$ npm run build
+
+# Netlify CLI をインストール
+$ npm install -g netlify-cli
+
+# Netlify に新しいサイトを作成
+$ ntl init
+
+# ユニークなプレビュー URL にデプロイ
+$ ntl deploy
+
+公開フォルダにdistを入力
+```

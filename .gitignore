@@ -3,3 +3,6 @@ Docker/mysql/data/*
 !Docker/mysql/data/.gitkeep
 logs/*
 !logs/.gitkeep
+
+# Local Netlify folder
+.netlify
